@@ -1,0 +1,74 @@
+@use 'variables'; // Importa as variáveis
+@use 'base';      // Importa os estilos de base
+@use 'header';    // Importa os estilos do cabeçalho
+@use 'products';  // Importa os estilos dos produtos
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: variables.$font-family; // Usando a variável com o prefixo 'variables.'
+}
+
+body {
+    background-color: variables.$background-color; // Utiliza a cor de fundo definida
+}
+
+li {
+    list-style: none;
+}
+
+.container {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px; // Adicionando padding lateral
+}
+
+// Media Queries para Responsividade
+@media (max-width: 768px) {
+    // Menu
+    header .container {
+        flex-direction: column; // Alinha o conteúdo verticalmente
+        align-items: flex-start; // Alinha à esquerda
+    }
+
+    .menu {
+        flex-direction: column; // Alinha os itens do menu em coluna
+        margin-top: 10px; // Espaçamento acima do menu
+    }
+
+    .menu li {
+        margin: 5px 0; // Ajustando o espaçamento vertical entre os itens
+    }
+
+    // Produtos
+    .products {
+        grid-template-columns: repeat(2, 1fr); // Duas colunas para tablets
+        row-gap: 20px; // Espaçamento maior entre as linhas
+    }
+}
+
+@media (max-width: 480px) {
+    // Menu
+    .menu {
+        flex-direction: column; // Alinha os itens do menu em coluna
+        align-items: flex-start; // Alinha à esquerda
+        padding: 10px; // Adiciona padding
+    }
+
+    .menu li {
+        margin: 10px 0; // Espaçamento vertical entre os itens do menu
+    }
+
+    // Produtos
+    .products {
+        grid-template-columns: 1fr; // Uma coluna para smartphones
+        padding: 0 10px; // Padding lateral para evitar que o conteúdo fique colado nas bordas
+    }
+
+    // Ajustes nos itens do produto
+    .product-item {
+        padding: 15px; // Adiciona padding ao redor de cada item
+    }
+}
